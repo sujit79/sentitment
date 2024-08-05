@@ -1,7 +1,8 @@
 ## Experimental Code
 
-Code maps input string to array of strings and performs sentiment analysis.
-Not tested....
+Code maps input string to array of strings and performs sentiment analysis. <br/>
+Not tested.... <br/>
+Gives fraction for the sentiment within the text.<br/>
 
 # Sentiment
 
