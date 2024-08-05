@@ -30,7 +30,7 @@ $ cat <INPUT> | \
 
 ## Source of Inspiration
 
-Template and Dependencies : https://github.com/whitfin/efflux
+Template and Dependencies : https://github.com/whitfin/efflux <br/>
 Sentiment : https://docs.rs/vader_sentiment/latest/vader_sentiment/
 
 
