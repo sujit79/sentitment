@@ -27,3 +27,10 @@ $ cat <INPUT> | \
     ./target/release/sentiment_reducer \
     > <OUTPUT>
 ```
+
+## Source of Inspiration
+
+Template and Dependencies : https://github.com/whitfin/efflux
+Sentiment : https://docs.rs/vader_sentiment/latest/vader_sentiment/
+
+
