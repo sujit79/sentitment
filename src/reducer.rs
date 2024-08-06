@@ -21,6 +21,9 @@ fn option_string_to_u8(opt: Option<String>) -> Option<u8> {
 fn option_to_u8(opt: Option<u8>) -> u8 {
     opt.unwrap_or(0)
 }
+fn option_f64_to_string(opt: Option<&f64>) -> Option<String> {
+    opt.map(|&value| value.to_string())
+}
 /// An empty implementation of the `Reducer` trait.
 impl Reducer for SentimentReducer {
    
@@ -29,17 +32,18 @@ impl Reducer for SentimentReducer {
     }
 
     fn reduce(&mut self, key: &[u8], values: &[&[u8]], ctx: &mut Context) {
+        
+        // Carry out the main reducer tasks inside this block.
+
         let binding_value = flatten_slice(values);
         let sentiment_text: &str = std::str::from_utf8(&binding_value).unwrap();
         
-        // Carry out the main reducer tasks inside this block.
         let analyzer = vader_sentiment::SentimentIntensityAnalyzer::new();
     
-        // declare x as i32
         let binding_score = analyzer.polarity_scores(sentiment_text);
         let polarity_scores: Option<&f64> = binding_score.get(&"compound");
  
-        let value: u8 = option_to_u8(option_string_to_u8(polarity_scores.map(|e| e.to_string())));
+        let value: u8 = option_to_u8(option_string_to_u8(option_f64_to_string(polarity_scores)));
         ctx.write(key, &[value]);
     }
 
